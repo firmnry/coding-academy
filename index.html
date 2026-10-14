@@ -1,0 +1,486 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Academy</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7fb;
+            color: #222;
+        }
+
+        header {
+            background-color: #142850;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 10px;
+        }
+
+        nav {
+            background-color: #27496d;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 15px;
+        }
+
+        nav button {
+            background-color: #00a8cc;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        nav button:hover {
+            background-color: #0090ad;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .halaman {
+            display: none;
+        }
+
+        .halaman.aktif {
+            display: block;
+        }
+
+        .judul {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #142850;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 18px;
+        }
+
+        .card-content h3 {
+            color: #142850;
+            margin-bottom: 10px;
+        }
+
+        .card-content p {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        form {
+            max-width: 650px;
+            margin: auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        .pilihan {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .pilihan label {
+            font-weight: normal;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tombol {
+            background-color: #00a8cc;
+            color: white;
+            border: none;
+            padding: 13px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .tombol:hover {
+            background-color: #007f9e;
+        }
+
+        .hasil {
+            display: none;
+            max-width: 650px;
+            margin: 25px auto;
+            padding: 25px;
+            background-color: white;
+            border-left: 5px solid #00a8cc;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .hasil h3 {
+            color: #142850;
+            margin-bottom: 15px;
+        }
+
+        .hasil p {
+            margin-bottom: 12px;
+            line-height: 1.5;
+            overflow-wrap: anywhere;
+        }
+
+        footer {
+            background-color: #142850;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+            }
+
+            nav button {
+                width: 100%;
+            }
+
+            form {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Coding Academy</h1>
+        <p>Belajar Coding, Bangun Masa Depan!</p>
+    </header>
+
+    <nav>
+        <button onclick="bukaHalaman('gallery')">Gallery Pelatihan</button>
+        <button onclick="bukaHalaman('pendaftaran')">Pendaftaran</button>
+    </nav>
+
+    <main class="container">
+
+        <section id="gallery" class="halaman aktif">
+            <h2 class="judul">Gallery Kegiatan Pelatihan</h2>
+
+            <div class="gallery">
+
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80"
+                         alt="Pelatihan pemrograman">
+                    <div class="card-content">
+                        <h3>Pelatihan Web Development</h3>
+                        <p>Peserta belajar membuat website menggunakan HTML, CSS, dan JavaScript dari dasar hingga membuat halaman web sederhana.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80"
+                         alt="Diskusi kelompok">
+                    <div class="card-content">
+                        <h3>Diskusi dan Kerja Tim</h3>
+                        <p>Peserta bekerja sama dalam kelompok untuk menyelesaikan permasalahan pemrograman dan mengembangkan kemampuan problem solving.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=800&q=80"
+                         alt="Belajar teknologi">
+                    <div class="card-content">
+                        <h3>Praktik Pemrograman</h3>
+                        <p>Peserta mempraktikkan penulisan kode menggunakan editor pemrograman dan mempelajari cara menemukan serta memperbaiki kesalahan program.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
+                         alt="Kolaborasi peserta">
+                    <div class="card-content">
+                        <h3>Proyek Akhir</h3>
+                        <p>Peserta membuat proyek sederhana secara berkelompok sebagai penerapan materi yang telah dipelajari selama kegiatan pelatihan.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="pendaftaran" class="halaman">
+            <h2 class="judul">Formulir Pendaftaran Pelatihan</h2>
+
+            <form id="formPendaftaran">
+
+                <div class="form-group">
+                    <label for="nik">NIK</label>
+                    <input type="text" id="nik" name="nik"
+                           inputmode="numeric" maxlength="16"
+                           pattern="[0-9]{16}"
+                           title="NIK harus terdiri dari 16 digit angka"
+                           placeholder="Masukkan 16 digit NIK" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap</label>
+                    <input type="text" id="nama" name="nama"
+                           placeholder="Masukkan nama lengkap" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Jenis Kelamin</label>
+                    <div class="pilihan">
+                        <label>
+                            <input type="radio" name="jenisKelamin"
+                                   value="Laki-laki" required>
+                            Laki-laki
+                        </label>
+
+                        <label>
+                            <input type="radio" name="jenisKelamin"
+                                   value="Perempuan">
+                            Perempuan
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="hp">Nomor HP</label>
+                    <input type="tel" id="hp" name="hp"
+                           placeholder="Masukkan nomor HP"
+                           pattern="[0-9]{10,15}"
+                           title="Nomor HP harus terdiri dari 10 sampai 15 digit angka"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="alamat">Alamat</label>
+                    <textarea id="alamat" name="alamat"
+                              placeholder="Masukkan alamat lengkap"
+                              required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Bahasa Pemrograman yang Diminati</label>
+                    <div class="pilihan">
+                        <label>
+                            <input type="checkbox" name="bahasa"
+                                   value="HTML & CSS">
+                            HTML & CSS
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="bahasa"
+                                   value="JavaScript">
+                            JavaScript
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="bahasa"
+                                   value="Python">
+                            Python
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="bahasa"
+                                   value="Java">
+                            Java
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="bahasa"
+                                   value="PHP">
+                            PHP
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="tombol">
+                    Simpan Pendaftaran
+                </button>
+
+                <button type="reset" class="tombol">
+                    Reset
+                </button>
+
+            </form>
+
+            <div id="hasil" class="hasil">
+                <h3>Hasil Pendaftaran</h3>
+                <div id="isiHasil"></div>
+                <button type="button" class="tombol"
+                        onclick="cetakHasil()">
+                    Cetak Hasil
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Coding Academy | Belajar Coding Bersama</p>
+    </footer>
+
+    <script>
+        function bukaHalaman(id) {
+            document.querySelectorAll(".halaman").forEach(function(halaman) {
+                halaman.classList.remove("aktif");
+            });
+
+            document.getElementById(id).classList.add("aktif");
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+        const form = document.getElementById("formPendaftaran");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const bahasa = document.querySelectorAll(
+                'input[name="bahasa"]:checked'
+            );
+
+            if (bahasa.length === 0) {
+                alert("Silakan pilih minimal satu bahasa pemrograman!");
+                return;
+            }
+
+            const konfirmasi = confirm(
+                "Apakah Anda sudah yakin untuk menyimpan?"
+            );
+
+            if (konfirmasi) {
+                const nik = document.getElementById("nik").value;
+                const nama = document.getElementById("nama").value;
+                const jenisKelamin = document.querySelector(
+                    'input[name="jenisKelamin"]:checked'
+                ).value;
+                const hp = document.getElementById("hp").value;
+                const alamat = document.getElementById("alamat").value;
+
+                const pilihanBahasa = Array.from(bahasa)
+                    .map(function(item) {
+                        return item.value;
+                    })
+                    .join(", ");
+
+                const isiHasil = document.getElementById("isiHasil");
+
+                isiHasil.replaceChildren();
+
+                const data = [
+                    ["NIK", nik],
+                    ["Nama Lengkap", nama],
+                    ["Jenis Kelamin", jenisKelamin],
+                    ["Nomor HP", hp],
+                    ["Alamat", alamat],
+                    ["Bahasa Pemrograman", pilihanBahasa]
+                ];
+
+                data.forEach(function(item) {
+                    const paragraf = document.createElement("p");
+                    const label = document.createElement("strong");
+
+                    label.textContent = item[0] + ": ";
+                    paragraf.appendChild(label);
+                    paragraf.appendChild(
+                        document.createTextNode(item[1])
+                    );
+
+                    isiHasil.appendChild(paragraf);
+                });
+
+                document.getElementById("hasil").style.display = "block";
+
+                document.getElementById("hasil").scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+                alert("Pendaftaran berhasil disimpan!");
+
+            } else {
+                alert("Penyimpanan dibatalkan.");
+            }
+        });
+
+        form.addEventListener("reset", function() {
+            document.getElementById("hasil").style.display = "none";
+        });
+
+        function cetakHasil() {
+            window.print();
+        }
+    </script>
+
+</body>
+</html>
+```
